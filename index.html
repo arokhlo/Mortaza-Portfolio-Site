@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mortaza Zolfpour-Arokhlo - Full Stack Developer & Researcher</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== INTEGRATED STYLING: MODERN CV + PROJECT CARDS ===== */
+        /* Root variables harmonised from both CV.html and the target style */
+        :root {
+            --primary: #2c5aa0;        /* from CV.html primary */
+            --primary-light: #4a7bc8;
+            --secondary: #e63946;       /* CV accent for highlights */
+            --accent: #f4a261;           /* warm accent from CV */
+            --dark: #333;
+            --light: #f9f9f9;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 12px 25px rgba(0,0,0,0.15);
+            
+            /* Project card colors (kept for consistency) */
+            --project-primary: #2c5aa0;  /* aligned with primary */
+            --project-secondary: #e63946;
+            --project-accent: #6BC4A6;
+            --project-light: #FFC759;
+            --project-bg: #F9F7F3;
+            --white: #FFFFFF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;           /* horizontal padding only — top/bottom zero for sections */
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 25px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        /* Content Sections - now attached directly below navbar with zero gap */
+        .content-section {
+            display: none;
+            padding: 40px 20px;        /* inner spacing, but no top margin */
+            background-color: var(--white);
+            border-radius: 0 0 12px 12px;  /* rounded only at bottom */
+            box-shadow: var(--box-shadow);
+            margin: 0;                  /* zero margin from navbar */
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Home Section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: var(--white);
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 25px;
+            opacity: 0.95;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary);
+            color: var(--white);
+            box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .about-text h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .about-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+        
+        .skills-section, .hobbies-section {
+            margin-top: 30px;
+        }
+        
+        .skills-section h3, .hobbies-section h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .skills-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .skill-category h4 {
+            color: var(--secondary);
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+        
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .skill-item {
+            background-color: var(--light);
+            padding: 6px 15px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .hobbies-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .hobby-item {
+            background-color: var(--light);
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        /* Projects Section - Enhanced Card Grid (from CV.html) */
+        .projects-header {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white; 
+            padding: 25px 20px;
+            border-radius: 12px; 
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .projects-header h1 { 
+            font-size: 2.2rem; 
+            margin-bottom: 5px; 
+        }
+        .projects-header p { 
+            font-size: 1.1rem; 
+            max-width: 700px; 
+            margin: 0 auto; 
+            opacity: 0.95; 
+        }
+
+        .projects-grid {
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px; 
+            margin-bottom: 40px;
+        }
+
+        .project-card {
+            background: white; 
+            border-radius: 12px; 
+            overflow: hidden;
+            box-shadow: var(--box-shadow); 
+            transition: all 0.3s ease;
+            display: flex; 
+            flex-direction: column; 
+            height: 100%;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .project-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: var(--shadow-hover); 
+        }
+
+        .project-image {
+            height: 5px;                /* subtle coloured top border */
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: block; 
+            width: 100%;
+        }
+
+        .project-content { 
+            padding: 20px; 
+            flex-grow: 1; 
+            display: flex; 
+            flex-direction: column; 
+        }
+        .project-title { 
+            color: var(--primary); 
+            margin-bottom: 8px; 
+            font-size: 1.3rem; 
+            font-weight: 600;
+        }
+        .project-title a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .project-title a:hover {
+            color: var(--secondary);
+        }
+        .project-description { 
+            color: var(--gray); 
+            margin-bottom: 15px; 
+            line-height: 1.5; 
+            flex-grow: 1; 
+            font-size: 0.95rem; 
+        }
+
+        .project-tech {
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 6px; 
+            margin-bottom: 15px;
+        }
+        .tech-tag {
+            background: var(--accent); 
+            color: white; 
+            padding: 4px 10px;
+            border-radius: 20px; 
+            font-size: 0.75rem; 
+            font-weight: 500;
+        }
+
+        .project-links { 
+            display: flex; 
+            gap: 10px; 
+            margin-top: auto; 
+        }
+        .project-link {
+            padding: 8px 15px; 
+            background: var(--primary); 
+            color: white;
+            border-radius: 6px; 
+            font-size: 0.85rem; 
+            transition: 0.2s;
+            display: inline-flex; 
+            align-items: center; 
+            gap: 5px; 
+            text-decoration: none;
+        }
+        .project-link:hover { 
+            background: var(--secondary); 
+            color: white; 
+        }
+
+        .section-title {
+            color: var(--primary); 
+            margin: 40px 0 20px; 
+            padding-bottom: 8px;
+            border-bottom: 3px solid var(--accent); 
+            font-weight: 600;
+            font-size: 1.8rem;
+        }
+
+        .publications-section {
+            background: var(--light); 
+            padding: 25px; 
+            border-radius: 12px; 
+            margin: 40px 0;
+        }
+        .publication-item {
+            margin-bottom: 20px; 
+            padding-bottom: 20px; 
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        .publication-item:last-child { 
+            border: none; 
+            margin: 0; 
+            padding: 0; 
+        }
+        .publication-title a { 
+            color: var(--primary); 
+            font-weight: 600; 
+            text-decoration: none; 
+        }
+        .publication-title a:hover { 
+            color: var(--secondary); 
+            text-decoration: underline; 
+        }
+        .publication-authors { 
+            color: var(--gray); 
+            font-size: 0.9rem; 
+            margin: 3px 0; 
+        }
+        .publication-journal { 
+            font-style: italic; 
+            color: var(--dark); 
+            font-size: 0.9rem; 
+        }
+
+        .btn-outline-primary {
+            background: transparent; 
+            color: var(--primary); 
+            border: 2px solid var(--primary);
+            padding: 8px 20px; 
+            border-radius: 6px; 
+            text-decoration: none; 
+            transition: 0.2s;
+            display: inline-block;
+        }
+        .btn-outline-primary:hover { 
+            background: var(--primary); 
+            color: white; 
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 40px;
+            margin-top: 20px;
+        }
+        
+        .contact-info h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .contact-details {
+            margin-top: 25px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon {
+            background: linear-gradient(135deg, var(--accent), #e0a86b);
+            color: var(--white);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(244, 162, 97, 0.3);
+        }
+        
+        .contact-form {
+            background-color: var(--light);
+            padding: 30px;
+            border-radius: 12px;
+            border-top: 5px solid var(--accent);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background-color: var(--white);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(44, 90, 160, 0.1);
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: var(--white);
+            border: none;
+            padding: 14px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-size: 1rem;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(44, 90, 160, 0.3);
+        }
+        
+        .submit-btn:disabled {
+            background: var(--gray);
+            transform: none;
+            box-shadow: none;
+            cursor: not-allowed;
+        }
+        
+        .form-message {
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            display: none;
+        }
+        
+        .form-message.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+        
+        .form-message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+        
+        .form-note {
+            margin-top: 15px;
+            padding: 12px;
+            background-color: #e7f3ff;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+            font-size: 0.9rem;
+            color: var(--dark);
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: var(--gray);
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        /* CV Section - detailed layout imported from CV.html */
+        .cv-content {
+            padding: 30px;
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .cv-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid var(--accent);
+        }
+        
+        .cv-header h1 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 2.2rem;
+        }
+        
+        .cv-header .title {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .cv-contact {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-bottom: 20px;
+        }
+        
+        .cv-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .cv-contact-item a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .cv-contact-item a:hover {
+            text-decoration: underline;
+            color: var(--secondary);
+        }
+        
+        .cv-section {
+            margin-bottom: 30px;
+        }
+        
+        .cv-section h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--light-gray);
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .cv-section h2::before {
+            content: "";
+            display: block;
+            width: 5px;
+            height: 25px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .cv-item {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed var(--light-gray);
+        }
+        
+        .cv-item:last-child {
+            border-bottom: none;
+        }
+        
+        .cv-item-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .cv-item-title {
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 1.1rem;
+        }
+        
+        .cv-item-org {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .cv-item-date {
+            color: var(--gray);
+            font-style: italic;
+        }
+        
+        .cv-skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .cv-skill-category {
+            background: var(--light);
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .cv-skill-category strong {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+        
+        /* Publication items inside CV */
+        .publication-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--light-gray);
+            line-height: 1.6;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 5px 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .about-content, .contact-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .skills-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .cv-contact {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Print styles */
+        @media print {
+            nav, .cta-buttons, .footer, .contact-form {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Mortaza Portfolio</div>
+            <ul class="nav-links">
+                <li><a href="#" class="nav-link active" data-target="home">Home</a></li>
+                <li><a href="#" class="nav-link" data-target="cv">CV</a></li>
+                <li><a href="#" class="nav-link" data-target="projects">Projects</a></li>
+                <li><a href="#" class="nav-link" data-target="contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Home Section (includes summary, skills, hobbies) -->
+        <section id="home" class="content-section active">
+            <div class="hero">
+                <h1>Mortaza Zolfpour-Arokhlo</h1>
+                <p>Full Stack Developer | AI Researcher | PhD in Computer Science</p>
+                <p>Experienced Software Developer and IT professional with over 20 years in software engineering, AI, and IT systems.</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-primary" data-target="projects">View My Projects</a>
+                    <a href="#" class="btn btn-secondary" data-target="cv">View My CV</a>
+                    <a href="#" class="btn btn-secondary" data-target="contact">Get In Touch</a>
+                </div>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Professional Summary</h2>
+                    <p>Full Stack Developer proficient in HTML, CSS, JavaScript, Django, Python, and PHP, with hands-on experience using GitHub, Heroku, PostgreSQL, and MySQL. Demonstrated ability to produce clean, reliable code through project work and hackathon involvement. A strong problem-solver with leadership experience in the hospitality sector, delivering a 20% improvement in operational efficiency. Highly motivated to join an innovative development team where I can contribute and continue to grow. Committed to supporting charitable and non-profit organisations through my technical skills.</p>
+                    
+                    <div class="skills-section">
+                        <h3>Technical Skills</h3>
+                        <div class="skills-list">
+                            <div class="skill-category">
+                                <h4>Frontend</h4>
+                                <div class="skill-items">
+                                    <span class="skill-item">HTML5</span>
+                                    <span class="skill-item">CSS3</span>
+                                    <span class="skill-item">JavaScript</span>
+                                    <span class="skill-item">React</span>
+                                    <span class="skill-item">Bootstrap</span>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-category">
+                                <h4>Backend & Databases</h4>
+                                <div class="skill-items">
+                                    <span class="skill-item">Python</span>
+                                    <span class="skill-item">Django</span>
+                                    <span class="skill-item">Flask</span>
+                                    <span class="skill-item">PostgreSQL</span>
+                                    <span class="skill-item">MySQL</span>
+                                    <span class="skill-item">SQLite</span>
+                                    <span class="skill-item">PHP</span>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-category">
+                                <h4>Tools & Methodologies</h4>
+                                <div class="skill-items">
+                                    <span class="skill-item">Git</span>
+                                    <span class="skill-item">GitHub</span>
+                                    <span class="skill-item">Heroku</span>
+                                    <span class="skill-item">AWS</span>
+                                    <span class="skill-item">Docker</span>
+                                    <span class="skill-item">Agile</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hobbies-section">
+                    <h3>Hobbies & Interests</h3>
+                    <div class="hobbies-list">
+                        <span class="hobby-item">Personal coding projects</span>
+                        <span class="hobby-item">Playing in amateur orchestras</span>
+                        <span class="hobby-item">Cooking & Baking</span>
+                        <span class="hobby-item">Jigsaw puzzles</span>
+                        <span class="hobby-item">Gardening</span>
+                        <span class="hobby-item">Reading</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CV Section – fully updated from CV.html -->
+        <section id="cv" class="content-section">
+            <div class="cv-content">
+                <div class="cv-header">
+                    <h1>Mortaza Zolfpour-Arokhlo</h1>
+                    <div class="title">Full Stack Developer & AI Researcher</div>
+                    <div class="cv-contact">
+                        <div class="cv-contact-item"><i class="fas fa-map-marker-alt"></i> Preston, UK</div>
+                        <div class="cv-contact-item"><i class="fas fa-envelope"></i> <a href="mailto:mortazazolfpour@gmail.com">mortazazolfpour@gmail.com</a></div>
+                        <div class="cv-contact-item"><i class="fas fa-graduation-cap"></i> <a href="https://scholar.google.com/citations?user=WBXYhfQAAAAJ&hl=en" target="_blank">Google Scholar</a></div>
+                        <div class="cv-contact-item"><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/mortaza-za/" target="_blank">LinkedIn</a></div>
+                        <div class="cv-contact-item"><i class="fab fa-github"></i> <a href="https://github.com/arokhlo" target="_blank">GitHub</a></div>
+                    </div>
+                </div>
+                
+                <div class="cv-section">
+                    <h2>Professional Summary</h2>
+                    <p>Experienced Software Developer and IT professional with a PhD in Computer Science and over 20 years' experience in software engineering, AI, and IT systems. Full Stack Developer proficient in modern web technologies with a strong track record of delivering high-quality solutions. Demonstrated ability to produce clean, reliable code through project work and hackathon involvement. A strong problem-solver with leadership experience, delivering measurable improvements in operational efficiency. Committed to supporting charitable and non-profit organisations through technical skills.</p>
+                </div>
+                
+                <div class="cv-section">
+                    <h2>Technical Skills</h2>
+                    <div class="cv-skills-grid">
+                        <div class="cv-skill-category"><strong>Languages:</strong> HTML5, CSS, JavaScript, Python, Java, PHP, SQL</div>
+                        <div class="cv-skill-category"><strong>Frameworks:</strong> Django, Flask, React, Bootstrap</div>
+                        <div class="cv-skill-category"><strong>Databases:</strong> PostgreSQL, MySQL, SQLite</div>
+                        <div class="cv-skill-category"><strong>Tools:</strong> Git, GitHub, Heroku, AWS, Docker</div>
+                    </div>
+                </div>
+                
+                <div class="cv-section">
+                    <h2>Education and Training</h2>
+                    <div class="cv-item"><div class="cv-item-header"><div><span class="cv-item-title">Diploma in Full Stack Software Development</span>, <span class="cv-item-org">Code Institute (Edinburgh Napier University accredited)</span></div><span class="cv-item-date">Jun 2025 – Nov 2025</span></div></div>
+                    <div class="cv-item"><div class="cv-item-header"><div><span class="cv-item-title">English Language Programme & Project Manager</span>, <span class="cv-item-org">Warrington & Vale Royal College</span></div><span class="cv-item-date">2022 – Jun 2025</span></div></div>
+                    <div class="cv-item"><div class="cv-item-header"><div><span class="cv-item-title">PhD in Computer Science</span>, <span class="cv-item-org">University of Technology Malaysia</span></div><span class="cv-item-date">2010 – 2013</span></div></div>
+                    <div class="cv-item"><div class="cv-item-header"><div><span class="cv-item-title">MSc in IT Engineering</span>, <span class="cv-item-org">Shiraz University, Iran</span></div><span class="cv-item-date">2006 – 2008</span></div></div>
+                    <div class="cv-item"><div class="cv-item-header"><div><span class="cv-item-title">MSc in Industrial Engineering</span>, <span class="cv-item-org">Iran Postgraduate Institute of Industry</span></div><span class="cv-item-date">1997 – 2000</span></div></div>
+                    <div class="cv-item"><div class="cv-item-header"><div><span class="cv-item-title">BSc in Mathematics</span>, <span class="cv-item-org">Razi University, Iran</span></div><span class="cv-item-date">1990 – 1994</span></div></div>
+                </div>
+                
+                <div class="cv-section">
+                    <h2>Professional Experience</h2>
+                    <div class="cv-item"><div class="cv-item-header"><div><span class="cv-item-title">Postdoctoral Researcher</span>, <span class="cv-item-org">Complutense University of Madrid, Spain</span></div><span class="cv-item-date">2020 – 2021</span></div><p>Conducted applied AI research in smart transportation and multi-agent systems. Developed simulation models for route planning using reinforcement learning.</p></div>
+                    <div class="cv-item"><div class="cv-item-header"><div><span class="cv-item-title">Assistant Professor</span>, <span class="cv-item-org">Islamic Azad University, Iran</span></div><span class="cv-item-date">2010 – 2020</span></div><p>Taught and developed courses in software engineering, databases, AI, and cybersecurity. Supervised over 100 IT projects, led digital transformation initiatives.</p></div>
+                    <div class="cv-item"><div class="cv-item-header"><div><span class="cv-item-title">Postdoctoral Fellow</span>, <span class="cv-item-org">University of Technology Malaysia</span></div><span class="cv-item-date">2014 – 2015</span></div><p>Worked on agent-based software systems and intelligent web technologies within transport and logistics domains.</p></div>
+                    <div class="cv-item"><div class="cv-item-header"><div><span class="cv-item-title">Director of ICT</span>, <span class="cv-item-org">Islamic Azad University, Marvdasht Branch</span></div><span class="cv-item-date">2003 – 2009</span></div><p>Led a software development team to build and maintain academic systems. Oversaw full-stack development, project planning, and delivery.</p></div>
+                    <div class="cv-item"><div class="cv-item-header"><div><span class="cv-item-title">Head of IT & Data Services</span>, <span class="cv-item-org">Islamic Azad University, Gachsaran Branch</span></div><span class="cv-item-date">2002 – 2003</span></div><p>Managed university IT systems, data services and information operations.</p></div>
+                    <div class="cv-item"><div class="cv-item-header"><div><span class="cv-item-title">Junior Software Engineer</span>, <span class="cv-item-org">Shiraz Shahed Industrial Complex, Iran</span></div><span class="cv-item-date">1996 – 2002</span></div><p>Developed and maintained company applications using FoxPro and QuickBasic.</p></div>
+                </div>
+                
+                <div class="cv-section">
+                    <h2>Selected Publications</h2>
+                    <div class="publication-item">Zolfpour-Arokhlo, M. et al. (2014). <a href="https://www.sciencedirect.com/science/article/abs/pii/S0952197614000086" target="_blank">"Modelling route planning using Q-learning with multi-agent systems"</a>, <em>Engineering Applications of Artificial Intelligence</em>, 29, 163–177.</div>
+                    <div class="publication-item">Zolfpour-Arokhlo, M. et al. (2013). <a href="https://www.sciencedirect.com/science/article/abs/pii/S0957417412010019" target="_blank">"Multi-agent supply chain route planning"</a>, <em>Expert Systems with Applications</em>, 40(5), 1505–1518.</div>
+                    <div class="publication-item">Zolfpour-Arokhlo, M. et al. (2011). <a href="https://produccioncientifica.ucm.es/documentos/61fa8a58565bff40e6e7b79f">"Multi-agent reinforcement learning for route guidance system"</a>, <em>International Journal of Advancements in Computing Technology</em>, 3(6), 224-232.</div>
+                    <div class="publication-item">Full list available upon request or via <a href="https://scholar.google.com/citations?user=WBXYhfQAAAAJ&hl=en" target="_blank">Google Scholar</a>.</div>
+                </div>
+                
+                <div class="cv-section">
+                    <h2>Certifications & Achievements</h2>
+                    <ul style="padding-left:20px;">
+                        <li>International Doctoral Fellowship, UTM Malaysia – £30,000 (2010–2013)</li>
+                        <li>Patent: Route Guidance Algorithm using Multi-agent Reinforcement Learning (2012)</li>
+                        <li>Reviewer for IEEE Transactions on Cybernetics, Elsevier, and Springer</li>
+                        <li>Editor-in-Chief, IJ-AI and IJSET (2013–present)</li>
+                        <li>UK Full Driving Licence</li>
+                    </ul>
+                </div>
+                <div class="cv-section"><h2>References</h2><p>Available upon request.</p></div>
+            </div>
+        </section>
+        <!-- Projects Section – enhanced card layout (from CV.html) plus NeoGrocery -->
+        <section id="projects" class="content-section">
+            <div class="projects-header">
+                <h1><i class="fas fa-code"></i> My Projects</h1>
+                <p>Web applications, games, and research</p>
+            </div>
+
+            <h2 class="section-title"><i class="fas fa-user"></i> Individual Projects</h2>
+            <div class="projects-grid">
+                <!-- Chinook Database -->
+                <div class="project-card"><div class="project-image"></div><div class="project-content"><h3 class="project-title"><a href="https://chinookmusicdbpro-318672ff6425.herokuapp.com/">Chinook Database System</a></h3><p class="project-description">Full-stack Django app with PostgreSQL, authentication, security questions, and role-based CRUD for music data management.</p><div class="project-tech"><span class="tech-tag">Django</span><span class="tech-tag">Python</span><span class="tech-tag">PostgreSQL</span><span class="tech-tag">Heroku</span></div><div class="project-links"><a href="https://chinookmusicdbpro-318672ff6425.herokuapp.com/" class="project-link" target="_blank"><i class="fas fa-external-link-alt"></i> Live</a></div></div></div>
+                <!-- Diversity Platform -->
+                <div class="project-card"><div class="project-image"></div><div class="project-content"><h3 class="project-title"><a href="https://arokhlo.github.io/diversity-inclusion-project/">Diversity & Inclusion</a></h3><p class="project-description">Interactive dashboard promoting workplace diversity with data visualization and responsive design using vanilla JS.</p><div class="project-tech"><span class="tech-tag">HTML</span><span class="tech-tag">CSS</span><span class="tech-tag">JavaScript</span></div><div class="project-links"><a href="https://arokhlo.github.io/diversity-inclusion-project/" class="project-link" target="_blank"><i class="fas fa-external-link-alt"></i> Live</a></div></div></div>
+                <!-- Pac-Man -->
+                <div class="project-card"><div class="project-image"></div><div class="project-content"><h3 class="project-title"><a href="https://richardv10.github.io/pac-man-extreme/">Pac-Man Extreme</a></h3><p class="project-description">Browser-based Pac-Man with HTML5 Canvas, collision detection, and event-driven gameplay mechanics.</p><div class="project-tech"><span class="tech-tag">JavaScript</span><span class="tech-tag">Canvas</span><span class="tech-tag">CSS</span></div><div class="project-links"><a href="https://richardv10.github.io/pac-man-extreme/" class="project-link" target="_blank"><i class="fas fa-external-link-alt"></i> Live</a></div></div></div>
+                <!-- Love Maths -->
+                <div class="project-card"><div class="project-image"></div><div class="project-content"><h3 class="project-title"><a href="https://arokhlo.github.io/Love-Maths/">Love Maths</a></h3><p class="project-description">Interactive maths quiz game with multiple difficulty levels and real-time feedback for learning engagement.</p><div class="project-tech"><span class="tech-tag">HTML</span><span class="tech-tag">CSS</span><span class="tech-tag">JavaScript</span></div><div class="project-links"><a href="https://arokhlo.github.io/Love-Maths/" class="project-link" target="_blank"><i class="fas fa-external-link-alt"></i> Live</a></div></div></div>
+                <!-- Social Platform (Our Corner) -->
+                <div class="project-card"><div class="project-image"></div><div class="project-content"><h3 class="project-title"><a href="https://hackathon-social-platform-0d4a6cd4eda3.herokuapp.com/marketplace/">Our Corner</a></h3><p class="project-description">Mini social platform for local communities with post feed, events calendar, marketplace, and user authentication.</p><div class="project-tech"><span class="tech-tag">Django</span><span class="tech-tag">Python</span><span class="tech-tag">Heroku</span><span class="tech-tag">JS</span></div><div class="project-links"><a href="https://hackathon-social-platform-0d4a6cd4eda3.herokuapp.com/marketplace/" class="project-link" target="_blank"><i class="fas fa-external-link-alt"></i> Live</a></div></div></div>
+                <!-- Preston Sanctuary -->
+                <div class="project-card"><div class="project-image"></div><div class="project-content"><h3 class="project-title"><a href="https://preston.cityofsanctuary.org/">Preston Sanctuary</a></h3><p class="project-description">Static site with dynamic content loading, client-side routing, real-time Facebook feed, and custom search across 30+ pages.</p>
+
+<div class="project-tech">
+<span class="tech-tag">JavaScript</span>
+<span class="tech-tag">HTML/CSS</span>
+<span class="tech-tag">Bootstrap</span>
+</div>
+
+<div class="project-links"><a href="https://preston.cityofsanctuary.org/" class="project-link" target="_blank"><i class="fas fa-external-link-alt"></i> Live</a></div></div></div>
+
+<!--  111111111111111111111111  -->
+
+           <!-- NeoGrocery Pro -->
+                <div class="project-card"><div class="project-image"></div><div class="project-content"><h3 class="project-title"><a href="https://arokhlo.github.io/NeoGroceryPro/">NeoGrocery Pro</a></h3><p class="project-description">Smart grocery store with 175+ items, real‑time cart, discount codes, printable invoices, and versioned JSON export.</p>
+
+        <div class="portfolio-tech">
+            <span class="tech-tag">HTML/CSS/JS</span>
+            <span class="tech-tag">Bootstrap</span>
+            <span class="tech-tag">LocalStorage</span>
+            <span class="tech-tag">Versioning</span>
+        </div>
+
+<div class="project-links"><a href="https://arokhlo.github.io/NeoGroceryPro" class="project-link" target="_blank"><i class="fas fa-external-link-alt"></i> Live</a></div></div></div>
+
+<!--  111111111111111111111111  -->
+            </div>
+
+            <h2 class="section-title"><i class="fas fa-flask"></i> Research Projects</h2>
+            <div class="projects-grid">
+                <!-- Supply Chain -->
+                <div class="project-card"><div class="project-image"></div><div class="project-content"><h3 class="project-title"><a href="https://www.sciencedirect.com/science/article/abs/pii/S0957417412010019">Supply Chain Optimization</a></h3><p class="project-description">PhD research in data analysis, algorithm development, and predictive modeling for supply chains (Elsevier).</p><div class="project-tech"><span class="tech-tag">Java</span><span class="tech-tag">Data Analysis</span><span class="tech-tag">Modeling</span></div><div class="project-links"><a href="https://www.sciencedirect.com/science/article/abs/pii/S0957417412010019" class="project-link" target="_blank"><i class="fas fa-external-link-alt"></i> Paper</a></div></div></div>
+                <!-- Route Planning -->
+                <div class="project-card"><div class="project-image"></div><div class="project-content"><h3 class="project-title"><a href="https://www.sciencedirect.com/science/article/abs/pii/S0952197614000086">Route Planning with AI</a></h3><p class="project-description">Multi-agent systems and optimization research for dynamic route planning (Elsevier).</p><div class="project-tech"><span class="tech-tag">Java</span><span class="tech-tag">AI</span><span class="tech-tag">MAS</span><span class="tech-tag">Optimization</span></div><div class="project-links"><a href="https://www.sciencedirect.com/science/article/abs/pii/S0952197614000086" class="project-link" target="_blank"><i class="fas fa-external-link-alt"></i> Paper</a></div></div></div>
+            </div>
+
+            <!-- Publications block -->
+            <div class="publications-section">
+                <h3><i class="fas fa-scroll"></i> Selected Publications</h3>
+                <div class="publication-item"><div class="publication-title"><a href="https://www.sciencedirect.com/science/article/abs/pii/S0952197614000086" target="_blank">Modelling route planning using Q-learning with multi-agent systems</a></div><div class="publication-authors">Zolfpour-Arokhlo, M. et al. (2014)</div><div class="publication-journal">Engineering Applications of AI, 29, 163–177</div></div>
+                <div class="publication-item"><div class="publication-title"><a href="https://www.sciencedirect.com/science/article/abs/pii/S0957417412010019" target="_blank">Multi-agent supply chain route planning</a></div><div class="publication-authors">Zolfpour-Arokhlo, M. et al. (2013)</div><div class="publication-journal">Expert Systems with Applications, 40(5), 1505–1518</div></div>
+                <div class="text-center mt-4"><a href="https://scholar.google.com/citations?user=WBXYhfQAAAAJ&hl=en" target="_blank" class="btn-outline-primary"><i class="fas fa-graduation-cap"></i> Full Publication List</a></div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="content-section">
+            <h2 class="section-title">Contact Me</h2>
+            <p>If you wish to contact me regarding opportunities, collaborations, or just to say hello, please use the form below.</p>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <p>Feel free to reach out for collaborations, opportunities, or questions about my work.</p>
+                    <div class="contact-details">
+                        <div class="contact-item"><div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div><div>Preston, UK / Remote Worldwide</div></div>
+                        <div class="contact-item"><div class="contact-icon"><i class="fab fa-linkedin-in"></i></div><div><a href="https://www.linkedin.com/in/mortaza-za/" target="_blank" style="color:var(--dark);">linkedin.com/in/mortaza-za</a></div></div>
+                        <div class="contact-item"><div class="contact-icon"><i class="fab fa-github"></i></div><div><a href="https://github.com/arokhlo" target="_blank" style="color:var(--dark);">github.com/arokhlo</a></div></div>
+                        <div class="contact-item"><div class="contact-icon"><i class="fas fa-graduation-cap"></i></div><div><a href="https://scholar.google.com/citations?user=WBXYhfQAAAAJ&hl=en" target="_blank" style="color:var(--dark);">Google Scholar</a></div></div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <div id="formMessage" class="form-message"></div>
+                    <form id="contactForm" action="https://formspree.io/f/mwpjybwk" method="POST">
+                        <div class="form-group"><label for="fullName">Full Name *</label><input type="text" id="fullName" name="name" class="form-control" required></div>
+                        <div class="form-group"><label for="email">Email Address *</label><input type="email" id="email" name="email" class="form-control" required></div>
+                        <div class="form-group"><label for="subject">Subject</label><input type="text" id="subject" name="subject" class="form-control"></div>
+                        <div class="form-group"><label for="message">Message *</label><textarea id="message" name="message" class="form-control" required></textarea></div>
+                        <input type="hidden" name="_subject" value="New Contact Form Submission - Portfolio">
+                        <input type="text" name="_gotcha" style="display:none">
+                        <button type="submit" class="submit-btn" id="submitBtn"><span id="submitText">Send Message</span><span id="submitLoading" style="display:none;"><i class="fas fa-spinner fa-spin"></i> Sending...</span></button>
+                    </form>
+                    <div class="form-note"><i class="fas fa-info-circle"></i> After submitting, you'll be redirected to a confirmation page.</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <div class="footer"><p>&copy; 2026 Mortaza Zolfpour-Arokhlo. All rights reserved.</p></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const contentSections = document.querySelectorAll('.content-section');
+            const ctaButtons = document.querySelectorAll('.btn[data-target]');
+            
+            function showSection(sectionId) {
+                contentSections.forEach(s => s.classList.remove('active'));
+                navLinks.forEach(l => l.classList.remove('active'));
+                document.getElementById(sectionId).classList.add('active');
+                const activeLink = document.querySelector(`.nav-link[data-target="${sectionId}"]`);
+                if (activeLink) activeLink.classList.add('active');
+                history.pushState(null, null, `#${sectionId}`);
+            }
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showSection(this.getAttribute('data-target'));
+                });
+            });
+            
+            ctaButtons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showSection(this.getAttribute('data-target'));
+                });
+            });
+            
+            const hash = window.location.hash.substring(1);
+            if (hash && ['home','cv','projects','contact'].includes(hash)) showSection(hash);
+            
+            // Form handling
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function() {
+                    document.getElementById('submitText').style.display = 'none';
+                    document.getElementById('submitLoading').style.display = 'inline';
+                    document.getElementById('submitBtn').disabled = true;
+                });
+            }
+        });
+    </script>
+</body>
+</html>
